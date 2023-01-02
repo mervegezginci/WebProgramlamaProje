@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+	<title>Web Proje</title>
+</head>
+<body>
+
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+		<a href="/" class=" w3-bar-item">@localizer["anasayfa"]</a>
+		<a href="/Dil/Index" class="w3-bar-item w3-button">@localizer["dil"]</a>
+		<a href="/Kategori/Index" class="w3-bar-item w3-button">@localizer["kategori"]</a>
+		<a href="/Kitap/Index" class="w3-bar-item w3-button">@localizer["kitap"]</a>
+		<a href="/KitapYazar/Index" class="w3-bar-item w3-button">@localizer["kitapyazar"]</a>
+		<a href="/Yazar/Index" class="w3-bar-item w3-button">@localizer["yazar"]</a>
+		<a href="/Yorumlar/Index" class="w3-bar-item w3-button">@localizer["yorumlar"]</a>
+	</div>
+
+	<!-- Page Content -->
+	<div style="margin-left:15%">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container-fluid">
+				<div class="w3-container w3-bar w3-teal" style="text-align: center">
+					<h1>@localizer["kitapSitesi"]</h1>
+				</div>
+				<partial name="_LoginPartial" />
+			</div>
+		</nav>
+
+
+		<div class="container">
+			<main role="main" class="pb-3">
+				@RenderBody()
+			</main>
+		</div>
+		@*<img src="img_car.jpg" alt="Car" style="width:100%">*@
+
+		<div class="w3-container" style="text-align: center">
+			<footer>
+				<p>&copy; @DateTime.Now.Year - Sakarya @localizer["üniversite"] - Merve GEZGİNCİ</p>
+			</footer>
+		</div>
+
+	
+
+	</div>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@RenderSection("Scripts", required: false)
+
+</body>
+
+</html>
